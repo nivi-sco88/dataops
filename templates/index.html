@@ -1,0 +1,32 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Dashboard</title>
+    <style>
+        .data {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data th, .data td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .data th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data Dashboard</h1>
+    <h2>Summary Statistics</h2>
+    <ul>
+        <li>Total Sales: {{ total_sales }}</li>
+        <li>Total Invoices: {{ total_invoices }}</li>
+        <li>Total Customers: {{ total_customers }}</li>
+    </ul>
+    <h2>Sample Data</h2>
+    <div>{{ tables|safe }}</div>
+</body>
+</html>

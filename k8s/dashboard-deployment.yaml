@@ -1,0 +1,26 @@
+# dashboard-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+    spec:
+      containers:
+        - name: dashboard
+          image: <your-dockerhub-username>/dashboard:latest
+          ports:
+        - containerPort: 5000
+          volumeMounts:
+        - name: data-volume
+          mountPath: /app
+      volumes:
+      - name: data-volume
+        emptyDir: {}

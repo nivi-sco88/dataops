@@ -1,0 +1,24 @@
+# data-processing-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-processing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-processing
+  template:
+    metadata:
+      labels:
+        app: data-processing
+    spec:
+      containers:
+        - name: data-processing
+          image: <your-dockerhub-username>/data_processing:latest
+          volumeMounts:
+        - name: data-volume
+          mountPath: /app
+      volumes:
+      - name: data-volume
+        emptyDir: {}
